@@ -17,8 +17,8 @@ export default async function AdminUsersPage() {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-3xl flex-col justify-center px-4 py-10">
         <div className="space-y-3">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">회원 목록</h1>
-          <p className="text-sm text-slate-600">회원 관리를 보려면 로그인이 필요합니다.</p>
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">회원 목록</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-300">회원 관리를 보려면 로그인이 필요합니다.</p>
         </div>
       </main>
     );
@@ -28,8 +28,8 @@ export default async function AdminUsersPage() {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-3xl flex-col justify-center px-4 py-10">
         <div className="space-y-3">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">회원 목록</h1>
-          <p className="text-sm text-slate-600">이 페이지는 관리자만 볼 수 있습니다.</p>
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">회원 목록</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-300">이 페이지는 관리자만 볼 수 있습니다.</p>
         </div>
       </main>
     );
@@ -40,8 +40,8 @@ export default async function AdminUsersPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
       <div className="mb-4 space-y-2">
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">회원 목록</h1>
-        <p className="text-sm text-slate-500">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">회원 목록</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-300">
           총 {users.length}명의 회원이 고기직통에 가입되어 있습니다.
         </p>
       </div>
@@ -50,18 +50,18 @@ export default async function AdminUsersPage() {
         {users.map((user: AdminUser) => (
           <div
             key={user.id}
-            className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white/90 p-4 text-sm shadow-sm transition hover:-translate-y-[1px] hover:shadow-md md:flex-row md:items-center md:justify-between"
+            className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white/90 p-4 text-sm shadow-sm transition hover:-translate-y-[1px] hover:shadow-md dark:border-slate-800 dark:bg-slate-900/70 md:flex-row md:items-center md:justify-between"
           >
             <div>
-              <p className="text-sm font-medium text-slate-900">{user.name ?? '-'}</p>
-              <p className="text-xs text-slate-500">{user.email ?? '-'}</p>
+              <p className="text-sm font-medium text-slate-900 dark:text-slate-50">{user.name ?? '-'}</p>
+              <p className="text-xs text-slate-500 dark:text-slate-300">{user.email ?? '-'}</p>
             </div>
-            <div className="flex flex-col items-start gap-1 text-xs text-slate-500 md:items-end">
+            <div className="flex flex-col items-start gap-1 text-xs text-slate-500 dark:text-slate-300 md:items-end">
               <span
                 className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${
                   user.role === 'ADMIN'
-                    ? 'bg-rose-50 text-rose-600'
-                    : 'bg-slate-100 text-slate-700'
+                    ? 'bg-rose-50 text-rose-600 dark:bg-rose-400/20 dark:text-rose-200'
+                    : 'bg-slate-100 text-slate-700 dark:bg-slate-700/30 dark:text-slate-200'
                 }`}
               >
                 {user.role === 'ADMIN' ? '관리자' : '일반회원'}

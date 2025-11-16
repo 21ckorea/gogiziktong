@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         )}
       </div>
 
-      <section className="rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/70">
+      <section className="rounded-2xl border border-slate-100 bg-white/95 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900/70">
         {product.imageUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img

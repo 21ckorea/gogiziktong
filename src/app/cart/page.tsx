@@ -55,14 +55,14 @@ export default function CartPage() {
   const total = items.reduce((sum, item) => sum + (item.product?.price ?? 0) * item.quantity, 0);
 
   if (status === 'loading') {
-    return <main className="mx-auto max-w-3xl px-4 py-8">로딩 중...</main>;
+    return <main className="mx-auto max-w-3xl px-4 py-8 text-slate-700 dark:text-slate-200">로딩 중...</main>;
   }
 
   if (!session?.user) {
     return (
       <main className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="mb-4 text-2xl font-bold">장바구니</h1>
-        <p className="text-sm text-gray-600">장바구니를 보려면 로그인이 필요합니다.</p>
+        <h1 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-50">장바구니</h1>
+        <p className="text-sm text-gray-600 dark:text-slate-300">장바구니를 보려면 로그인이 필요합니다.</p>
         <Button asChild className="mt-4">
           <Link href="/auth/signin">로그인하러 가기</Link>
         </Button>
@@ -73,8 +73,8 @@ export default function CartPage() {
   if (!loading && items.length === 0) {
     return (
       <main className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="mb-4 text-2xl font-bold">장바구니</h1>
-        <p className="text-sm text-gray-600">장바구니에 담긴 상품이 없습니다.</p>
+        <h1 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-50">장바구니</h1>
+        <p className="text-sm text-gray-600 dark:text-slate-300">장바구니에 담긴 상품이 없습니다.</p>
         <Button asChild className="mt-4">
           <Link href="/products">상품 보러가기</Link>
         </Button>
@@ -122,17 +122,17 @@ export default function CartPage() {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="mb-4 text-2xl font-bold">장바구니</h1>
+      <h1 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-50">장바구니</h1>
       {loading ? (
-        <p className="text-sm text-gray-600">불러오는 중...</p>
+        <p className="text-sm text-gray-600 dark:text-slate-300">불러오는 중...</p>
       ) : (
         <>
-          <ul className="divide-y rounded-lg border bg-white">
+          <ul className="divide-y rounded-2xl border border-slate-100 bg-white/90 shadow-sm dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/70">
             {items.map((item) => (
               <li key={item.id} className="flex items-center justify-between gap-4 px-4 py-3">
                 <div className="flex-1">
-                  <p className="text-sm font-medium">{item.product?.name}</p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="text-sm font-medium text-slate-900 dark:text-slate-50">{item.product?.name}</p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-slate-300">
                     {(item.product?.price ?? 0).toLocaleString()}원
                   </p>
                   <div className="mt-2 flex items-center gap-2 text-xs">
@@ -167,7 +167,7 @@ export default function CartPage() {
                     </Button>
                   </div>
                 </div>
-                <p className="text-sm font-semibold">
+                <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                   {((item.product?.price ?? 0) * item.quantity).toLocaleString()}원
                 </p>
               </li>
@@ -175,8 +175,8 @@ export default function CartPage() {
           </ul>
 
           <div className="mt-6 flex items-center justify-between">
-            <p className="text-base font-semibold">총 결제 금액</p>
-            <p className="text-xl font-bold">{total.toLocaleString()}원</p>
+            <p className="text-base font-semibold text-slate-900 dark:text-slate-200">총 결제 금액</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">{total.toLocaleString()}원</p>
           </div>
 
           <div className="mt-6 flex gap-3">

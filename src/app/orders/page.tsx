@@ -24,8 +24,8 @@ export default async function OrdersPage() {
     return (
       <main className="mx-auto flex min-h-[60vh] max-w-4xl flex-col justify-center px-4 py-10">
         <div className="space-y-3">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">주문 내역</h1>
-          <p className="text-sm text-slate-600">
+          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">주문 내역</h1>
+          <p className="text-sm text-slate-600 dark:text-slate-300">
             주문 내역을 확인하려면 로그인이 필요합니다.
           </p>
           <Button asChild className="mt-2 rounded-full px-6">
@@ -41,13 +41,13 @@ export default async function OrdersPage() {
   return (
     <main className="mx-auto max-w-4xl px-4 py-10">
       <div className="mb-6 space-y-2">
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">주문 내역</h1>
-        <p className="text-sm text-slate-500">최근 주문들을 한눈에 확인해 보세요.</p>
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">주문 내역</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-300">최근 주문들을 한눈에 확인해 보세요.</p>
       </div>
 
       {orders.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-200 bg-white/70 px-6 py-10 text-center text-sm text-slate-500">
-          <p className="mb-2 text-base font-medium text-slate-700">아직 주문이 없습니다.</p>
+        <div className="rounded-2xl border border-dashed border-slate-200 bg-white/80 px-6 py-10 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300">
+          <p className="mb-2 text-base font-medium text-slate-700 dark:text-slate-100">아직 주문이 없습니다.</p>
           <p className="mb-4">맛있는 고기를 장바구니에 담고 첫 주문을 진행해 보세요.</p>
           <Button asChild className="rounded-full px-6">
             <Link href="/products">상품 보러가기</Link>

@@ -67,20 +67,20 @@ export default function NewProductPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
       <div className="space-y-2 mb-6">
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">새 상품 등록</h1>
-        <p className="text-sm text-slate-500">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">새 상품 등록</h1>
+        <p className="text-sm text-slate-500 dark:text-slate-300">
           고기직통에 올릴 신선한 상품 정보를 입력해 주세요.
         </p>
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-5 rounded-2xl border border-slate-100 bg-white/80 p-6 shadow-sm backdrop-blur-sm"
+        className="space-y-5 rounded-2xl border border-slate-100 bg-white/85 p-6 shadow-sm backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/70"
       >
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-600">상품명</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">상품명</label>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300 dark:focus:bg-slate-900"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="예) [손돌이 정육점] 한우 등심"
@@ -88,9 +88,9 @@ export default function NewProductPage() {
           />
         </div>
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-600">설명</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">설명</label>
           <textarea
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300 dark:focus:bg-slate-900"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={3}
@@ -98,10 +98,10 @@ export default function NewProductPage() {
           />
         </div>
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-600">가격 (원)</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">가격 (원)</label>
           <input
             type="number"
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:focus:border-rose-300 dark:focus:bg-slate-900"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
@@ -109,9 +109,9 @@ export default function NewProductPage() {
           />
         </div>
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-slate-600">이미지 URL (임시)</label>
+          <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">이미지 URL (임시)</label>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-slate-50/60 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300 dark:focus:bg-slate-900"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             placeholder="나중에 Vercel Blob 업로드로 교체 예정"
