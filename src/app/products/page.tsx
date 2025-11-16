@@ -10,6 +10,8 @@ async function getProducts() {
   });
 }
 
+type ProductWithMeta = Awaited<ReturnType<typeof getProducts>>[number];
+
 export default async function ProductsPage() {
   const products = await getProducts();
 
@@ -35,7 +37,7 @@ export default async function ProductsPage() {
         </div>
       ) : (
         <ul className="grid gap-4 md:grid-cols-3">
-          {products.map((product) => (
+          {products.map((product: ProductWithMeta) => (
             <li
               key={product.id}
               className="group flex flex-col rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-sm transition hover:-translate-y-[1px] hover:shadow-md"
