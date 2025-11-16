@@ -29,17 +29,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const canEdit = isOwner || isAdmin;
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
+    <main className="mx-auto max-w-3xl px-4 py-10 text-slate-900 dark:text-slate-100">
       <div className="space-y-2 mb-6">
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white">
           {product.name}
         </h1>
         {product.description && (
-          <p className="text-sm text-slate-600">{product.description}</p>
+          <p className="text-base text-slate-700 dark:text-slate-200">{product.description}</p>
         )}
       </div>
 
-      <section className="rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-sm">
+      <section className="rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/70">
         {product.imageUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -48,13 +48,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
             className="mb-4 h-80 w-full rounded-xl object-cover"
           />
         )}
-        <p className="text-xl font-semibold text-slate-900">
+        <p className="text-2xl font-semibold text-slate-900 dark:text-white">
           {product.price.toLocaleString()}원
-          <span className="ml-1 text-sm font-normal text-slate-500"> / 100g</span>
+          <span className="ml-1 text-base font-normal text-slate-500 dark:text-slate-300"> / 100g</span>
         </p>
       </section>
 
-      <div className="mt-6">
+      <div className="mt-6 text-slate-900 dark:text-slate-100">
         <ProductActionBar productId={product.id} canEdit={canEdit} />
       </div>
     </main>

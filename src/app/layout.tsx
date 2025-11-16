@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { Providers } from "@/providers";
 import { Navbar } from "@/components/navbar";
@@ -7,6 +8,10 @@ import { Navbar } from "@/components/navbar";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const InAppBrowserGuard = dynamic(() => import("@/components/in-app-browser-guard").then((mod) => mod.InAppBrowserGuard), {
+  ssr: false,
 });
 
 export const metadata: Metadata = {
@@ -54,6 +59,7 @@ export default function RootLayout({
       <body className={`${inter.variable} antialiased min-h-screen bg-background`}>
         <Providers>
           <div className="relative flex min-h-screen flex-col">
+            <InAppBrowserGuard />
             <Navbar />
             <main className="flex-1">
               {children}

@@ -17,7 +17,7 @@ export default async function Home() {
   const products = await getLatestProducts();
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 px-4 py-8">
+    <main className="mx-auto flex min-h-screen max-w-5xl flex-col gap-8 px-4 py-8 text-slate-900 dark:text-slate-100">
       <section className="rounded-2xl bg-gradient-to-r from-red-100 via-orange-50 to-amber-100 p-8 shadow-sm">
         <h1 className="text-3xl font-extrabold tracking-tight text-red-900 sm:text-4xl">
           산지에서 식탁까지, 고기직통
@@ -37,10 +37,10 @@ export default async function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-semibold">신규 등록 상품</h2>
+          <h2 className="text-xl font-semibold text-slate-900 dark:text-white">신규 등록 상품</h2>
           <Link
             href="/products"
-            className="text-sm text-blue-600 underline-offset-2 hover:underline"
+            className="text-sm font-medium text-blue-600 underline-offset-2 hover:underline dark:text-blue-400"
           >
             전체 보기
           </Link>
@@ -52,7 +52,7 @@ export default async function Home() {
             {products.map((product: LatestProduct) => (
               <li
                 key={product.id}
-                className="rounded-lg border bg-white p-4 shadow-sm"
+                className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-[1px] hover:shadow-md dark:border-slate-700 dark:bg-slate-900"
               >
                 {product.imageUrl && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -62,18 +62,18 @@ export default async function Home() {
                     className="mb-3 h-32 w-full rounded-md object-cover"
                   />
                 )}
-                <h3 className="truncate text-sm font-semibold">
+                <h3 className="truncate text-base font-semibold text-slate-900 dark:text-white">
                   {product.name}
                 </h3>
                 {product.description && (
-                  <p className="mt-1 line-clamp-2 text-xs text-gray-600">
+                  <p className="mt-1 line-clamp-2 text-sm text-gray-600 dark:text-slate-200">
                     {product.description}
                   </p>
                 )}
-                <p className="mt-2 text-sm font-bold">
+                <p className="mt-2 text-lg font-bold text-slate-900 dark:text-white">
                   {product.price.toLocaleString()}원
                 </p>
-                <Button asChild variant="outline" className="mt-3 w-full text-xs">
+                <Button asChild variant="outline" className="mt-3 w-full rounded-full text-sm font-medium">
                   <Link href={`/products/${product.id}`}>상세 보기</Link>
                 </Button>
               </li>
