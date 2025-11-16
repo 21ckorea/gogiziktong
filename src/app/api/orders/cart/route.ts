@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: '장바구니에 상품이 없습니다.' }, { status: 400 });
   }
 
-  const totalAmount = cartItems.reduce((sum, item) => {
+  const totalAmount = cartItems.reduce((sum: number, item: typeof cartItems[number]) => {
     const price = item.product?.price ?? 0;
     return sum + price * item.quantity;
   }, 0);
