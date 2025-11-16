@@ -112,26 +112,47 @@ export default function CartCheckoutPage() {
       return;
     }
 
+    const isMobile = /Android|iPhone|iPad|iPod|Mobi/i.test(window.navigator.userAgent);
+    const merchantUid = `cart_${Date.now()}`;
+
+    if (isMobile) {
+      try {
+        window.sessionStorage.setItem('cartCheckoutShippingAddressId', selectedAddressId);
+      } catch {
+        // ignore storage errors
+      }
+    }
+
     setProcessing(true);
     try {
       IMP.init(merchantId);
 
       const productNames = items.map((i) => i.product?.name).filter(Boolean).join(', ');
+      const paymentPayload: any = {
+        pg: 'html5_inicis',
+        pay_method: 'card',
+        name: productNames || '장바구니 결제',
+        amount: totalAmount,
+        buyer_email: session.user.email,
+        buyer_name: session.user.name,
+        merchant_uid: merchantUid,
+      };
+
+      if (isMobile) {
+        paymentPayload.m_redirect_url = `${window.location.origin}/checkout/cart/mobile-complete`;
+      }
 
       IMP.request_pay(
-        {
-          pg: 'html5_inicis',
-          pay_method: 'card',
-          name: productNames || '장바구니 결제',
-          amount: totalAmount,
-          buyer_email: session.user.email,
-          buyer_name: session.user.name,
-        },
+        paymentPayload,
         async (rsp: any) => {
           if (!rsp.success) {
             alert('결제가 취소되었거나 실패했습니다. \n사유: ' + (rsp.error_msg || '알 수 없는 오류'));
             setProcessing(false);
             return;
+          }
+
+          if (isMobile) {
+            return; // 모바일은 m_redirect_url 로 후속 처리
           }
 
           try {
