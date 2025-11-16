@@ -19,11 +19,13 @@ export async function POST(req: NextRequest) {
     include: { product: true },
   });
 
+  type CartItemWithProduct = (typeof cartItems)[number];
+
   if (cartItems.length === 0) {
     return NextResponse.json({ message: '장바구니에 상품이 없습니다.' }, { status: 400 });
   }
 
-  const totalAmount = cartItems.reduce((sum: number, item: typeof cartItems[number]) => {
+  const totalAmount = cartItems.reduce((sum: number, item: CartItemWithProduct) => {
     const price = item.product?.price ?? 0;
     return sum + price * item.quantity;
   }, 0);
@@ -46,7 +48,7 @@ export async function POST(req: NextRequest) {
       totalAmount,
       shippingAddressId: shippingAddressIdToUse,
       items: {
-        create: cartItems.map((item) => ({
+        create: cartItems.map((item: CartItemWithProduct) => ({
           productId: item.productId,
           quantity: item.quantity,
           price: item.product?.price ?? 0,

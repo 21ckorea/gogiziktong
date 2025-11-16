@@ -14,6 +14,9 @@ async function getOrders(userId: string) {
   });
 }
 
+type OrderWithRelations = Awaited<ReturnType<typeof getOrders>>[number];
+type OrderItemWithProduct = OrderWithRelations['items'][number];
+
 export default async function OrdersPage() {
   const session = await getServerSession(authOptions);
 
@@ -52,7 +55,7 @@ export default async function OrdersPage() {
         </div>
       ) : (
         <ul className="space-y-4">
-          {orders.map((order) => (
+          {orders.map((order: OrderWithRelations) => (
             <li
               key={order.id}
               className="rounded-2xl border border-slate-100 bg-white/90 p-5 shadow-sm transition hover:-translate-y-[1px] hover:shadow-md"
@@ -86,7 +89,7 @@ export default async function OrdersPage() {
 
               <div className="mt-3 flex items-end justify-between gap-4">
                 <ul className="flex-1 space-y-1 text-sm text-slate-700">
-                  {order.items.map((item) => (
+                  {order.items.map((item: OrderItemWithProduct) => (
                     <li key={item.id}>
                       {item.product?.name} x {item.quantity}개 ·{' '}
                       <span className="font-medium">
