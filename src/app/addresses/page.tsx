@@ -181,7 +181,7 @@ export default function AddressesPage() {
           <div>
             <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">라벨 (집/회사)</label>
             <input
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300"
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900 dark:placeholder:text-slate-500 dark:focus:border-rose-400"
               value={label}
               onChange={(e) => setLabel(e.target.value)}
               placeholder="집"
@@ -191,7 +191,7 @@ export default function AddressesPage() {
           <div>
             <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">수령인</label>
             <input
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300"
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900 dark:placeholder:text-slate-500 dark:focus:border-rose-400"
               value={receiverName}
               onChange={(e) => setReceiverName(e.target.value)}
               required
@@ -200,7 +200,7 @@ export default function AddressesPage() {
           <div>
             <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">연락처</label>
             <input
-              className="mt-1 w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300"
+              className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900 dark:placeholder:text-slate-500 dark:focus:border-rose-400"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="010-0000-0000"
@@ -211,7 +211,7 @@ export default function AddressesPage() {
             <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">우편번호</label>
             <div className="mt-1 flex gap-2">
               <input
-                className="w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100"
+                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900"
                 value={postalCode}
                 onChange={(e) => setPostalCode(e.target.value)}
                 required
@@ -231,7 +231,7 @@ export default function AddressesPage() {
         <div>
           <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">주소</label>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-rose-300"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900 dark:placeholder:text-slate-500 dark:focus:border-rose-400"
             value={address1}
             onChange={(e) => setAddress1(e.target.value)}
             placeholder="도로명/지번 주소"
@@ -241,7 +241,7 @@ export default function AddressesPage() {
         <div>
           <label className="block text-xs font-medium text-slate-600 dark:text-slate-200">상세 주소</label>
           <input
-            className="mt-1 w-full rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100"
+            className="mt-1 w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-rose-400 focus:bg-white focus:ring-2 focus:ring-rose-100 dark:border-slate-600 dark:bg-white dark:text-slate-900"
             value={address2}
             onChange={(e) => setAddress2(e.target.value)}
           />

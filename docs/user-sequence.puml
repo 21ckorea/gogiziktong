@@ -1,0 +1,66 @@
+@startuml UserSequence
+!theme plain
+actor User as U
+participant "Next.js App" as App
+participant "Auth (NextAuth)" as Auth
+participant "API Routes" as API
+participant "Prisma / DB" as DB
+
+== 방문 및 로그인 ==
+U -> App: 접속(gogiziktong.vercel.app)
+App -> API: 최신 상품 조회 (/api/products)
+API -> DB: Product.findMany
+DB --> API: 상품 목록
+API --> App: JSON
+App --> U: 홈 화면 표시
+
+U -> App: "구글로 로그인" 선택
+App -> Auth: signIn("google")
+Auth -> Google: OAuth 인증
+Google --> Auth: 토큰/프로필
+Auth -> DB: User upsert & 세션 저장
+Auth --> App: 세션 쿠키
+App --> U: 로그인 완료 상태
+
+== 상품 주문 (장바구니 결제) ==
+U -> App: 상품 상세 페이지 열기
+App -> API: 상품 조회 (/api/products/[id])
+API -> DB: Product.findUnique
+DB --> API: 상품 데이터
+API --> App: JSON
+App --> U: 상세 화면 표시
+
+U -> App: 장바구니 담기
+App -> API: POST /api/cart
+API -> DB: CartItem upsert
+DB --> API: CartItem
+API --> App: 응답
+
+U -> App: 장바구니 결제 페이지 이동
+App -> API: GET /api/cart, GET /api/addresses
+API -> DB: CartItem.findMany / Address.findMany
+DB --> API: 데이터
+API --> App: JSON
+App --> U: 결제 폼 표시
+
+U -> App: "결제" 클릭
+App -> Iamport: request_pay
+Iamport --> App: 결제 성공 콜백
+App -> API: POST /api/orders/cart (shippingAddressId)
+API -> DB: 주문 생성 + 카트 비우기
+DB --> API: Order + Items
+API --> App: 응답
+App -> API: PATCH /api/orders/{id} 상태=PAID
+API -> DB: Order.update
+DB --> API: Order
+API --> App: 응답
+App --> U: 성공 안내 + /orders 이동
+
+== 주문 내역 조회 ==
+U -> App: /orders 접속
+App -> API: GET /api/orders
+API -> DB: Order.findMany(include items+address)
+DB --> API: 주문 목록
+API --> App: JSON
+App --> U: 주문 내역 표시
+@enduml

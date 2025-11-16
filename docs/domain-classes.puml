@@ -1,0 +1,65 @@
+@startuml DomainModel
+!theme plain
+
+class User {
+  +id: String
+  name: String?
+  email: String?
+  role: "USER" | "ADMIN"
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+class Product {
+  +id: String
+  name: String
+  description: String?
+  price: Int
+  imageUrl: String?
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+class Order {
+  +id: String
+  status: String
+  totalAmount: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+class OrderItem {
+  +id: String
+  quantity: Int
+  price: Int
+}
+
+class CartItem {
+  +id: String
+  quantity: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+class Address {
+  +id: String
+  label: String
+  receiverName: String
+  phone: String
+  postalCode: String
+  address1: String
+  address2: String
+  isDefault: Boolean
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+User "1" -- "*" Product : owns >
+User "1" -- "*" Order : places >
+User "1" -- "*" CartItem : has >
+User "1" -- "*" Address : manages >
+Order "1" -- "*" OrderItem : contains >
+OrderItem "*" -- "1" Product : references >
+CartItem "*" -- "1" Product : references >
+Order "*" -- "0..1" Address : ships to >
+@enduml
