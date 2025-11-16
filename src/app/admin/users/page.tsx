@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import type { User } from '@prisma/client';
 
 export default async function AdminUsersPage() {
   const session = await getServerSession(authOptions);
@@ -41,7 +42,7 @@ export default async function AdminUsersPage() {
       </div>
 
       <div className="space-y-3">
-        {users.map((user) => (
+        {users.map((user: User) => (
           <div
             key={user.id}
             className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white/90 p-4 text-sm shadow-sm transition hover:-translate-y-[1px] hover:shadow-md md:flex-row md:items-center md:justify-between"
