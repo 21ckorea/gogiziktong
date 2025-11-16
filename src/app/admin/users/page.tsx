@@ -1,7 +1,14 @@
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import type { User } from '@prisma/client';
+
+type AdminUser = Awaited<ReturnType<typeof fetchUsers>>[number];
+
+async function fetchUsers() {
+  return prisma.user.findMany({
+    orderBy: { createdAt: 'desc' },
+  });
+}
 
 export default async function AdminUsersPage() {
   const session = await getServerSession(authOptions);
@@ -28,9 +35,7 @@ export default async function AdminUsersPage() {
     );
   }
 
-  const users = await prisma.user.findMany({
-    orderBy: { createdAt: 'desc' },
-  });
+  const users = await fetchUsers();
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10">
@@ -42,7 +47,7 @@ export default async function AdminUsersPage() {
       </div>
 
       <div className="space-y-3">
-        {users.map((user: User) => (
+        {users.map((user: AdminUser) => (
           <div
             key={user.id}
             className="flex flex-col gap-2 rounded-2xl border border-slate-100 bg-white/90 p-4 text-sm shadow-sm transition hover:-translate-y-[1px] hover:shadow-md md:flex-row md:items-center md:justify-between"
