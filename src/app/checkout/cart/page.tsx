@@ -203,31 +203,31 @@ export default function CartCheckoutPage() {
     <>
       <Script src="https://cdn.iamport.kr/v1/iamport.js" strategy="afterInteractive" />
       <main className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="mb-4 text-2xl font-bold">장바구니 결제</h1>
-        <ul className="mb-4 divide-y rounded-lg border bg-white">
+        <h1 className="mb-4 text-2xl font-bold text-slate-900 dark:text-slate-50">장바구니 결제</h1>
+        <ul className="mb-4 divide-y rounded-2xl border border-slate-100 bg-white/90 shadow-sm dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900/70">
           {items.map((item) => (
             <li key={item.id} className="flex items-center justify-between px-4 py-3">
               <div>
-                <p className="text-sm font-medium">{item.product?.name}</p>
-                <p className="text-xs text-gray-500">
+                <p className="text-sm font-medium text-slate-900 dark:text-slate-50">{item.product?.name}</p>
+                <p className="text-xs text-gray-500 dark:text-slate-300">
                   {item.quantity}개 · {(item.product?.price ?? 0).toLocaleString()}원
                 </p>
               </div>
-              <p className="text-sm font-semibold">
+              <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                 {((item.product?.price ?? 0) * item.quantity).toLocaleString()}원
               </p>
             </li>
           ))}
         </ul>
         <div className="mb-6 flex items-center justify-between">
-          <p className="text-base font-semibold">총 결제 금액</p>
-          <p className="text-xl font-bold">{totalAmount.toLocaleString()}원</p>
+          <p className="text-base font-semibold text-slate-900 dark:text-slate-100">총 결제 금액</p>
+          <p className="text-xl font-bold text-slate-900 dark:text-white">{totalAmount.toLocaleString()}원</p>
         </div>
 
-        <section className="mb-6 rounded-lg border bg-white p-4 shadow-sm">
-          <h2 className="text-sm font-semibold">배송지 선택</h2>
+        <section className="mb-6 rounded-2xl border border-slate-100 bg-white/90 p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+          <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-50">배송지 선택</h2>
           {addresses.length === 0 ? (
-            <p className="mt-2 text-xs text-gray-600">
+            <p className="mt-2 text-xs text-gray-600 dark:text-slate-300">
               등록된 배송지가 없습니다.{' '}
               <Link href="/addresses" className="text-blue-500 underline">
                 배송지 추가하러 가기
@@ -235,7 +235,7 @@ export default function CartCheckoutPage() {
             </p>
           ) : (
             <select
-              className="mt-2 w-full rounded-md border px-3 py-2 text-sm"
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white/80 px-3 py-2 text-sm text-slate-900 focus:border-rose-400 focus:ring-2 focus:ring-rose-100 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100"
               value={selectedAddressId}
               onChange={(e) => setSelectedAddressId(e.target.value)}
             >
@@ -249,7 +249,7 @@ export default function CartCheckoutPage() {
         </section>
 
         <Button
-          className="w-full"
+          className="w-full rounded-full text-base font-semibold"
           size="lg"
           disabled={processing}
           onClick={handleCheckout}
