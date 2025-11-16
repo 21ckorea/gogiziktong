@@ -6,8 +6,9 @@ import { prisma } from '@/lib/prisma';
 // GET /api/orders/[id]
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { id: string } },
+  context: { params: { id: string } },
 ) {
+  const { params } = context;
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user) {
@@ -29,8 +30,9 @@ export async function GET(
 // PATCH /api/orders/[id] - 주문 상태 업데이트 (예: 결제 성공 후 PAID 처리)
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } },
+  context: { params: { id: string } },
 ) {
+  const { params } = context;
   const session = await getServerSession(authOptions);
 
   if (!session || !session.user) {
