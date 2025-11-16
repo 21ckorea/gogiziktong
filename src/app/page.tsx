@@ -11,6 +11,8 @@ async function getLatestProducts() {
   });
 }
 
+type LatestProduct = Awaited<ReturnType<typeof getLatestProducts>>[number];
+
 export default async function Home() {
   const products = await getLatestProducts();
 
@@ -47,7 +49,7 @@ export default async function Home() {
           <p className="text-sm text-gray-500">아직 등록된 상품이 없습니다. 첫 상품을 등록해 보세요!</p>
         ) : (
           <ul className="grid gap-4 md:grid-cols-3">
-            {products.map((product) => (
+            {products.map((product: LatestProduct) => (
               <li
                 key={product.id}
                 className="rounded-lg border bg-white p-4 shadow-sm"
