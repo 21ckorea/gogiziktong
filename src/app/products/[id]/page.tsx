@@ -2,7 +2,7 @@ import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import { ProductActionBar } from '@/components/product-action-bar';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth';
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
